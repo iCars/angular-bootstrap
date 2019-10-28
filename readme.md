@@ -1,151 +1,136 @@
-# Bootstrap-UI/datetime-picker
+### UI Bootstrap - [AngularJS](http://angularjs.org/) directives specific to [Bootstrap](http://getbootstrap.com)
 
-AngularJs directive to use a date and/or time picker as a dropdown from an input. 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-ui/bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
+[![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
 
-[Demo](http://plnkr.co/edit/S8UqwvXNGmDcPXV7a0N3)
+### Quick links
+- [Demo](#demo)
+- [Angular 2](#angular-2)
+- [Installation](#installation)
+    - [NPM](#install-with-npm)
+    - [Bower](#install-with-bower)
+    - [NuGet](#install-with-nuget)
+    - [Custom](#custom-build)
+    - [Manual](#manual-download)
+- [Support](#support)
+    - [FAQ](#faq)
+    - [Code of Conduct](#code-of-conduct)
+    - [PREFIX MIGRATION GUIDE](#prefix-migration-guide)
+    - [Supported browsers](#supported-browsers)
+    - [Need help?](#need-help)
+    - [Found a bug?](#found-a-bug)
+- [Contributing to the project](#contributing-to-the-project)
+- [Development, meeting minutes, roadmap and more.](#development-meeting-minutes-roadmap-and-more)
 
-## Installation
-To use the directive you must have the following angular-ui bootstrap directives included already
-* DatePicker
-* TimePicker
 
-You should already have the ui.bootstrap dependancy included in your app.js file like below, You then need to add ui.bootstrap.datetimepicker, as so
-```
-angular.module('app', ['ui.bootstrap', 'ui.bootstrap.datetimepicker']);
-```
-Download the source from dist/datetime-picker.min.js file and include it in your project.
+# Demo
 
-Or use Bower (thank you krico for setup)
-```
-bower install --save bootstrap-ui-datetime-picker
-```
-and link with `bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js`
+Do you want to see directives in action? Visit http://angular-ui.github.io/bootstrap/!
 
-## Usage
-You have the following properties available to use with the directive.  All are optional unless stated otherwise
-* ngModel (required) - Your date object
-* isOpen - (true/false)
-* closeOnDateSelection (true/false)
-* enableDate (true/false)
-* enableTime (true/false)
-* todayText  (string)
-* nowText (string)
-* dateText (string)
-* timeText (string)
-* clearText (string)
-* closeText (string)
-* dateDisabled
-* datepickerOptions (object)
-* timepickerOptions (object)
- 
-##### isOpen
-Whether the popup/dropdown is visible or not. Defaults to false
-##### closeOnDateSelection
-Close popup once a date has been chosen. TimePicker will stay open until user closes.
-##### enableDate
-Whether you would like the user to be able to select a date. Defaults to true
-##### enableTime
-Whether you would like the user to be able to select a time. Defaults to true
-##### todayText
-The text for the button that allows the user to select today when the date picker is visible
-##### nowText
-The text for the button that allows the user to select the current time when the time picker is visible.  If the date is already populated this will only change the time of the existing date.
-##### dateText
-The text for the button that allows the user to change to the date picker while the time picker is visible.
-##### timeText
-The text for the button that allows the user to change to the time picker while the date picker is visible.
-##### clearText
-The text for the button that allows the user to clear the currently selected date / time
-##### closeText
-The text for the button that closes the date / time popup/dropdown
-##### dateDisabled
-From angularUI site -> An optional expression to disable visible options based on passing date and current mode (day|month|year).
-##### datepickerOptions
-Object to configure settings for the datepicker (can be found on angularUI site)
-##### timepickerOptions
-Object to configure settings for the timepicker (can be found on angularUI site)
+# Angular 2
 
-## uiDatetimePickerConfig
-Now datetimePicker options are globally set by default.  If you do not state the values within the declaration, the config options are used instead.  Here are the default options
+Are you interested in Angular 2? We are on our way! Check out [ng-bootstrap](https://github.com/ui-bootstrap/core). 
 
-```
-.constant('uiDatetimePickerConfig', {
-    dateFormat: 'yyyy-MM-dd HH:mm',
-    enableDate: true,
-    enableTime: true,
-    todayText: 'Today',
-    nowText: 'Now',
-    clearText: 'Clear',
-    closeText: 'Done',
-    dateText: 'Date',
-    timeText: 'Time',
-    closeOnDateSelection: true,
-    appendToBody: false,
-    showButtonBar: true
-})
+# Installation
+
+Installation is easy as UI Bootstrap has minimal dependencies - only the AngularJS and Twitter Bootstrap's CSS are required.
+Note: Since version 0.13.0, UI Bootstrap depends on [ngAnimate](https://docs.angularjs.org/api/ngAnimate) for transitions and animations, such as the accordion, carousel, etc. Include `ngAnimate` in the module dependencies for your app in order to enable animation.
+
+Additionally, it is strongly recommended that for UI Bootstrap 0.13.3 and higher you use Angular 1.3.18 or higher due to animation fixes.
+
+#### Install with NPM
+
+```sh
+$ npm install angular-ui-bootstrap
 ```
 
-## Css
-Personally i dont like the look of the angular-ui calendar itself, this is because the buttons are configured to use the btn-default style.  To get round this there are 3 css classes applied to the datetimepicker and depending on the picker that is being shown.  These classes surround the div element that contains the angular-ui datepicker and timepicker.  Using these classes you can change the style of the calendar.  The class are
+This will install AngularJS and Bootstrap NPM packages.
 
-```
-.datetime-picker-dropdown
-```
-
-Applied to the dropdown that the pickers are contained within
-
-```
-.datetime-picker-dropdown > li.date-picker-menu
-```
-Applied when the date picker is visible
-
-```
-.datetime-picker-dropdown > li.time-picker-menu
-```
-Applied when the time picker is visible
-
-###### EXAMPLE
-For example, if i add this css code, you will see the difference to the calendar in the images below
-
-```
-.datetime-picker-dropdown > li.date-picker-menu div > table .btn-default {
-    border: 0;
-}
-```
-###### BEFORE
-![alt tag](http://imageshack.com/a/img633/6894/9Dt0Le.gif)
-###### AFTER
-![alt tag](http://imageshack.com/a/img673/5236/to31hz.gif)
-
-
-## Example
-Here is an example to use the directive with a bootstrap input, displaying a calendar button
-
-####HTML
-```
-<p class="input-group">
-    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="myDate" is-open="isOpen"  />
-    <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openCalendar($event, prop)"><i class="fa fa-calendar"></i></button>
-    </span>
-</p>
-```
-####JAVASCRIPT
-
-```
-app.controller('MyController', function() {
-    var that = this;
-
-    this.isOpen = false;
-
-    this.openCalendar = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        that.isOpen = true;
-    };
-});
+#### Install with Bower
+```sh
+$ bower install angular-bootstrap
 ```
 
-## Support
-This was developed using angular-ui bootstrap Version: 0.13.0 - 2015-05-02.  If you have a bug, please check what version of angular-ui you are using.  If you are using a version prior to this, then please upgrade if you can and try it. If the problem persists, please let me know.  I do have a day job but will try to get back to you asap.  If you can fix the bug, then let me know how, or even better, submit a pull request.
+Note: do not install 'angular-ui-bootstrap'.  A separate repository - [bootstrap-bower](https://github.com/angular-ui/bootstrap-bower) - hosts the compiled javascript file and bower.json.
+
+#### Install with NuGet
+To install AngularJS UI Bootstrap, run the following command in the Package Manager Console
+
+```sh
+PM> Install-Package Angular.UI.Bootstrap
+```
+
+#### Custom build
+
+Head over to http://angular-ui.github.io/bootstrap/ and hit the *Custom build* button to create your own custom UI Bootstrap build, just the way you like it.
+
+#### Manual download
+
+After downloading dependencies (or better yet, referencing them from your favorite CDN) you need to download build version of this project. All the files and their purposes are described here:
+https://github.com/angular-ui/bootstrap/tree/gh-pages#build-files
+Don't worry, if you are not sure which file to take, opt for `ui-bootstrap-tpls-[version].min.js`.
+
+### Adding dependency to your project
+
+When you are done downloading all the dependencies and project files the only remaining part is to add dependencies on the `ui.bootstrap` AngularJS module:
+
+```js
+angular.module('myModule', ['ui.bootstrap']);
+```
+
+If you're a Browserify or Webpack user, you can do:
+
+```js
+var uibs = require('angular-ui-bootstrap');
+
+angular.module('myModule', [uibs]);
+```
+
+# Support
+
+## FAQ
+
+https://github.com/angular-ui/bootstrap/wiki/FAQ
+
+# Code of Conduct
+
+Take a moment to read or [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## PREFIX MIGRATION GUIDE
+
+If you're updating your application to use prefixes, please check the [migration guide](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
+
+## Supported browsers
+
+Directives from this repository are automatically tested with the following browsers:
+* Chrome (stable and canary channel)
+* Firefox
+* IE 9 and 10
+* Opera
+* Safari
+
+Modern mobile browsers should work without problems.
+
+## Need help?
+Need help using UI Bootstrap?
+
+* Live help in the IRC (`#angularjs` channel at the `freenode` network). Use this [webchat](https://webchat.freenode.net/) or your own IRC client.
+* Ask a question in [StackOverflow](http://stackoverflow.com/) under the [angular-ui-bootstrap](http://stackoverflow.com/questions/tagged/angular-ui-bootstrap) tag.
+
+**Please do not create new issues in this repository to ask questions about using UI Bootstrap**
+
+## Found a bug?
+Please take a look at [CONTRIBUTING.md](CONTRIBUTING.md#you-think-youve-found-a-bug) and submit your issue [here](https://github.com/angular-ui/bootstrap/issues/new).
+
+
+----
+
+
+# Contributing to the project
+
+We are always looking for the quality contributions! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution guidelines.
+
+# Development, meeting minutes, roadmap and more.
+
+Head over to the [Wiki](https://github.com/angular-ui/bootstrap/wiki) for notes on development for UI Bootstrap, meeting minutes from the UI Bootstrap team, roadmap plans, project philosophy and more.
